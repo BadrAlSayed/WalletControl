@@ -27,7 +27,10 @@ const updateUser = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No user with id: ${id}`);
   const currUser = await User.findById(id);
-  currUser.transactions.push({ balance: currUser.balance, date: Date.now() });
+  currUser.transactions.unshift({
+    balance: currUser.balance,
+    date: Date.now(),
+  });
   currUser.balance = balance;
   try {
     await currUser.save();
