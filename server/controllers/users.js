@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const User = require("../models/user");
 
 const getUsers = async (req, res) => {
@@ -20,4 +21,20 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, createUser };
+const updateUser = async (req, res) => {
+  const { id } = req.params;
+  const { balance } = req.body;
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No user with id: ${id}`);
+  const currUser = await User.findById(id);
+  currUser.transactions.push({ balance: currUser.balance, date: Date.now() });
+  currUser.balance = balance;
+  try {
+    await currUser.save();
+    res.status(200).json(currUser);
+  } catch (error) {
+    res.status(409).json({ error: error.message });
+  }
+};
+
+module.exports = { getUsers, createUser, updateUser };
