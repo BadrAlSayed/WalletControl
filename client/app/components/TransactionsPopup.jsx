@@ -1,9 +1,8 @@
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import Typography from "@mui/material/Typography";
-import DialogContentText from "@mui/material/DialogContentText";
+
 import {
   FormControl,
   InputLabel,
@@ -82,7 +81,7 @@ const TransactionsPopup = ({ history }) => {
               label="Days"
               onChange={handleChange}
             >
-              <MenuItem value={0}>Zero</MenuItem>
+              <MenuItem value={1}>One</MenuItem>
               <MenuItem value={5}>Five</MenuItem>
               <MenuItem value={10}>Ten</MenuItem>
             </Select>
