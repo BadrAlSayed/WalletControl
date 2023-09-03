@@ -56,7 +56,11 @@ const TransactionsPopup = ({ history }) => {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen} className="mr-2">
+      <Button
+        variant="outlined"
+        onClick={handleClickOpen}
+        sx={{ marginRight: 2 }}
+      >
         Transaction History
       </Button>
       <Dialog
@@ -89,8 +93,8 @@ const TransactionsPopup = ({ history }) => {
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow className="bg-blue-500">
-                  <TableCell className="text-white">Date</TableCell>
-                  <TableCell className="text-white" align="right">
+                  <TableCell sx={{ color: "white" }}>Date</TableCell>
+                  <TableCell sx={{ color: "white" }} align="right">
                     Balance
                   </TableCell>
                 </TableRow>
