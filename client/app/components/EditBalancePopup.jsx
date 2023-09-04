@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 
 const EditBalancePopup = ({ row }) => {
+  const api = process.env.NEXT_PUBLIC_API_URL;
   const [open, setOpen] = useState(false);
   const [balance, setBalance] = useState(row.balance);
   const queryClient = useQueryClient();
@@ -22,7 +23,7 @@ const EditBalancePopup = ({ row }) => {
 
   const updateBalance = useMutation({
     mutationFn: (balance) =>
-      fetch(`http://localhost:5000/users/${row._id}`, {
+      fetch(`${api}/users/${row._id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

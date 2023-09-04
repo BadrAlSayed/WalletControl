@@ -17,6 +17,7 @@ import {
   TableContainer,
   Paper,
 } from "@mui/material";
+import TablePagination from "@mui/material/TablePagination";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useState, useEffect } from "react";
 
@@ -33,6 +34,17 @@ const TransactionsPopup = ({ history }) => {
   const [open, setOpen] = useState(false);
   const [days, setDays] = useState("");
   const [filteredHistory, setFilteredHistory] = useState(history);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   const handleChange = (e) => {
     setDays(e.target.value);
@@ -99,7 +111,13 @@ const TransactionsPopup = ({ history }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredHistory.map((transaction) => (
+                {(rowsPerPage > 0
+                  ? filteredHistory.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : filteredHistory
+                ).map((transaction) => (
                   <TableRow
                     key={transaction.date}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -115,6 +133,15 @@ const TransactionsPopup = ({ history }) => {
                 ))}
               </TableBody>
             </Table>
+            <TablePagination
+              component="div"
+              count={filteredHistory?.length || 0}
+              page={page}
+              onPageChange={handleChangePage}
+              rowsPerPage={rowsPerPage}
+              rowsPerPageOptions={[5]}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
           </TableContainer>
         </DialogContent>
       </Dialog>
