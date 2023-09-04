@@ -33,6 +33,7 @@ const LogIn = () => {
         setError("Invalid credentials");
         return;
       } else {
+        setError("");
         setSuccess("Success!");
         router.replace("/dashboard");
       }
