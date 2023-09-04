@@ -1,7 +1,7 @@
 # WalletControl
 
 ## Deployment
-I deployed the application on https://wallet-control-3rp7-pi9vv6erl-badralsayed.vercel.app/
+I deployed the application. You can access it [here](https://wallet-control-3rp7-pi9vv6erl-badralsayed.vercel.app/)
 
 ## Notes 
 * The project includes a user registration endpoint and an admin endpoint, primarily for testing purposes.
