@@ -9,11 +9,14 @@ export const authOptions = {
       async authorize(credentials) {
         const { userName, password } = credentials;
         try {
-          const res = await fetch(`${process.env.API_URL}/admins/checkAdmin`, {
-            method: "POST",
-            body: JSON.stringify({ userName, password }),
-            headers: { "Content-Type": "application/json" },
-          });
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/admins/checkAdmin`,
+            {
+              method: "POST",
+              body: JSON.stringify({ userName, password }),
+              headers: { "Content-Type": "application/json" },
+            }
+          );
           const data = await res.json();
 
           if (data.error) {
@@ -35,7 +38,7 @@ export const authOptions = {
   session: {
     strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
   pages: {
     signIn: "/",
   },

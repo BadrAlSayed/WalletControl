@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 
 const EditBalancePopup = ({ row }) => {
-  const api = process.env.API_URL;
+  const api = process.env.NEXT_PUBLIC_API_URL;
   const [open, setOpen] = useState(false);
   const [balance, setBalance] = useState(row.balance);
   const queryClient = useQueryClient();

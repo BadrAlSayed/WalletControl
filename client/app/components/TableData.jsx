@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const TableData = () => {
-  const api = process.env.API_URL;
+  const api = process.env.NEXT_PUBLIC_API_URL;
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
