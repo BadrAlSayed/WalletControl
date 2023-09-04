@@ -9,7 +9,7 @@ export const authOptions = {
       async authorize(credentials) {
         const { userName, password } = credentials;
         try {
-          const res = await fetch("http://localhost:5000/admins/checkAdmin", {
+          const res = await fetch(`${process.env.API_URL}/admins/checkAdmin`, {
             method: "POST",
             body: JSON.stringify({ userName, password }),
             headers: { "Content-Type": "application/json" },

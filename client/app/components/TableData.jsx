@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const TableData = () => {
+  const api = process.env.API_URL;
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -29,7 +30,7 @@ const TableData = () => {
     setPage(0);
   };
   const usersQuery = useQuery("users", () =>
-    fetch("http://localhost:5000/users").then((res) =>
+    fetch(`${api}/users`).then((res) =>
       res.json().catch((err) => console.log(err))
     )
   );
