@@ -10,6 +10,9 @@ app.use(cors());
 app.use(express.json());
 app.use("/users", usersRoutes);
 app.use("/admins", adminsRoutes);
+app.get("/", (req, res) => {
+  res.send("WalletControl API");
+});
 const MONGO_URL = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_KEY}@cluster0.sn1100o.mongodb.net/`;
 
 const PORT = process.env.PORT || 5000;
