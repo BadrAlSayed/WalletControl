@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import TablePagination from "@mui/material/TablePagination";
 import Button from "@mui/material/Button";
 import TransactionsPopup from "./TransactionsPopup";
+import CircularProgress from "@mui/material/CircularProgress";
 import EditBalancePopup from "./EditBalancePopup";
 import { useQuery } from "react-query";
 import { signOut } from "next-auth/react";
@@ -44,7 +45,7 @@ const TableData = () => {
   if (usersQuery.isLoading)
     return (
       <div className="flex items-center justify-center min-h-screen py-2 bg-[#f4f4f4]">
-        Loading...
+        <CircularProgress />
       </div>
     );
   return (

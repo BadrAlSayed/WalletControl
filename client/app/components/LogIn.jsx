@@ -19,6 +19,7 @@ const LogIn = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ const LogIn = () => {
         setError("Invalid credentials");
         return;
       } else {
+        setSuccess("Success!");
         router.replace("/dashboard");
       }
     } catch (error) {
@@ -77,6 +79,7 @@ const LogIn = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           {error && <p className="text-red-500">{error}</p>}
+          {success && <p className="text-green-500">{success}</p>}
           <Button
             type="submit"
             fullWidth
