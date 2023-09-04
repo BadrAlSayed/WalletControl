@@ -12,7 +12,7 @@ app.use("/users", usersRoutes);
 app.use("/admins", adminsRoutes);
 const MONGO_URL = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_KEY}@cluster0.sn1100o.mongodb.net/`;
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 mongoose
   .connect(MONGO_URL, {
