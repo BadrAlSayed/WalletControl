@@ -6,6 +6,7 @@ I deployed the application. You can access it [here](https://wallet-control-3rp7
 ## Notes 
 * The project includes a user registration endpoint and an admin endpoint, primarily for testing purposes.
 * A simple logout button has been implemented for testing as well.
+* If you require access to the .env files for further review, please let me know.
 ## Setup
 
 1. **Server Setup:**
